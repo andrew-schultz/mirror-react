@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Input extends Component {
   constructor( props ) {
     super( props );
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind( this );
   }
 
   handleChange( event ) {

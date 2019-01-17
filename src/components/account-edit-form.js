@@ -3,14 +3,18 @@ import { Redirect } from 'react-router-dom';
 import Input from './input.js';
 import axios from 'axios';
 
-class SignUpForm extends Component {
+class AccountEditForm extends Component {
   constructor( props ) {
     super( props );
+
+    var user = this.props.user;
+
     this.state = {
-      name: '',
-      email: '',
-      password: '',
-      success: false
+      name: user.name,
+      email: user.email,
+      password: '*******',
+      id: user.id,
+      success: null
     };
 
     this.handleNameChange = this.handleNameChange.bind( this );
@@ -37,21 +41,19 @@ class SignUpForm extends Component {
     const user = {
       'name': this.state.name,
       'email': this.state.email,
-      'password': this.state.password
+      'password': this.state.password,
+      'id': this.state.id
     };
 
-    axios.post( `http://localhost:3000/users`, { user } )
+    axios.post( `http://localhost:3000/users/${ user.id }`, { user } )
       .then( result => {
         if ( result.status == 200 ) {
-          this.setState( { success: true, user: result.data.users[ 0 ] } );
+          this.setState( {
+            success: 'Successfully updated Account',
+            user: result.data.users[ 0 ] } );
         }
-      } )
-  }
-
-  renderRedirect() {
-    if ( this.state.success ) {
-      return <Redirect to={{ pathname: '/user', state: { user: this.state.user } }} />
-    }
+      }
+    )
   }
 
   render() {
@@ -61,17 +63,16 @@ class SignUpForm extends Component {
 
     return(
       <div>
-        {this.renderRedirect()}
-
         <form className='form' onSubmit={ this.handleSubmit }>
-          <Input label='Name' value={ name } onValueChange={ this.handleNameChange } />
-          <Input label='Email' value={ email } onValueChange={ this.handleEmailChange } />
-          <Input label='Password' value={ password } onValueChange={ this.handlePasswordChange } />
+          <Input label='name' value={ name } onValueChange={ this.handleNameChange } />
+          <Input label='email' value={ email } onValueChange={ this.handleEmailChange } />
+          <Input label='password' value={ password } onValueChange={ this.handlePasswordChange } />
           <input type='submit' value='Submit' />
         </form>
+        <p>{ this.state.success }</p>
       </div>
     );
   }
 }
 
-export default SignUpForm;
+export default AccountEditForm;

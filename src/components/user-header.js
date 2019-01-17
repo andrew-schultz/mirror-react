@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../app.css';
 
-// const linkStyle = {
-//   marginRight: 15
-// }
+class UserHeader extends Component {
+  constructor( props ) {
+    super( props );
+    this.state = {
+      user: this.props.user
+    }
+  }
 
-class Header extends Component {
   render() {
     return(
-      <div>
-        <Link to='/user'>
+      <div className='nav'>
+        <Link className='navlink' to={{ pathname: '/user', state: { user: this.state.user } }} >
           User
         </Link>
-        <Link to='/workout'>
+        <Link className='navlink' to={{ pathname: '/workout', state: { user: this.state.user } }} >
           New Workout
         </Link>
-        <Link to='/workouts'>
+        <Link className='navlink' to={{ pathname: '/workouts', state: { user: this.state.user } }} >
           Workouts
         </Link>
       </div>
@@ -24,4 +27,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default UserHeader;

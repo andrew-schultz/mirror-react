@@ -2,19 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../app.css';
 
-// const linkStyle = {
-//   marginRight: 15
-// }
-
 class Header extends Component {
   render() {
     return(
-      <div>
-        <Link to='/'>
+      <div className='nav' >
+        <Link className='navlink' to='/'>
           Home
-        </Link>
-        <Link to='/register'>
-          Register
         </Link>
       </div>
     );
