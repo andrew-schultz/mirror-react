@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom
 import Header from './components/header.js';
 import UserHeader from './components/user-header.js';
 import Landing from './views/landing.js';
+import Login from './views/login.js';
 import Register from './views/register.js';
 import User from './views/user.js';
 import Workouts from './views/workouts';
@@ -17,6 +18,7 @@ class App extends Component{
       <Router>
         <div className='app'>
           <Route exact path='/' component={ Landing } />
+          <Route path='/login' component={ Login } />
           <Route path='/register' component={ Register } />
           <Route path='/user' component={ User } />
           <Route path='/workout' component={ NewWorkout } />

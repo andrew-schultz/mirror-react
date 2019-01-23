@@ -46,7 +46,9 @@ class WorkoutForm extends Component {
       exercises: this.state.workout_exercises
     };
 
-    axios.post( `http://localhost:3000/workouts`, { workout } )
+    axios.post( 'http://localhost:3000/workouts',
+      { workout },
+      { headers: { 'TOKEN': this.state.user.token } } )
       .then( result => {
         if ( result.status == 200 ) {
           this.setState( {

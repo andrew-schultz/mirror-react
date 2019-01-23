@@ -13,6 +13,13 @@ class User extends Component{
     this.state = {
       user: user
     }
+
+    this.handleUserChange = this.handleUserChange.bind( this );
+  }
+
+  handleUserChange( user ) {
+    console.log( user )
+    this.setState( { user } );
   }
 
   render() {
@@ -21,7 +28,7 @@ class User extends Component{
         <UserHeader user={ this.state.user } />
         <h1 className='title'>Hello { this.state.user.name }</h1>
         <h3 className='title'>Edit Account Info</h3>
-        <AccountEditForm user={ this.state.user } />
+        <AccountEditForm user={ this.state.user } onUserChange={ this.handleUserChange } />
       </div>
     )
   }

@@ -12,6 +12,11 @@ class Landing extends Component{
             Register
           </div>
         </Link>
+        <Link className='cleanLink' to='/login' >
+          <div className='registerButton'>
+            Login
+          </div>
+        </Link>
       </div>
     )
   }

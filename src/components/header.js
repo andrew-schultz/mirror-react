@@ -9,6 +9,12 @@ class Header extends Component {
         <Link className='navlink' to='/'>
           Home
         </Link>
+        <Link className='navlink' to='/login'>
+          Login
+        </Link>
+        <Link className='navlink' to='/register'>
+          Register
+        </Link>
       </div>
     );
   }

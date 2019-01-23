@@ -5,22 +5,22 @@ import '../app.css';
 class UserHeader extends Component {
   constructor( props ) {
     super( props );
-    this.state = {
-      user: this.props.user
-    }
   }
 
   render() {
     return(
       <div className='nav'>
-        <Link className='navlink' to={{ pathname: '/user', state: { user: this.state.user } }} >
+        <Link className='navlink' to={{ pathname: '/user', state: { user: this.props.user } }} >
           User
         </Link>
-        <Link className='navlink' to={{ pathname: '/workout', state: { user: this.state.user } }} >
+        <Link className='navlink' to={{ pathname: '/workout', state: { user: this.props.user } }} >
           New Workout
         </Link>
-        <Link className='navlink' to={{ pathname: '/workouts', state: { user: this.state.user } }} >
+        <Link className='navlink' to={{ pathname: '/workouts', state: { user: this.props.user } }} >
           Workouts
+        </Link>
+        <Link className='navlink' to={{ pathname: '/' }} >
+          Log Out
         </Link>
       </div>
     );

@@ -18,7 +18,8 @@ class Workouts extends Component{
   }
 
   componentDidMount() {
-    axios.get( `http://localhost:3000/workouts?user_id=${ this.state.user.id }` )
+    axios.get( `http://localhost:3000/workouts?user_id=${ this.state.user.id }`,
+      { headers: { 'TOKEN': this.state.user.token } } )
       .then( result => {
         if ( result.status == 200 ) {
           const workouts = result.data.workouts
